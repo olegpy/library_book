@@ -2,6 +2,7 @@
 from __future__ import unicode_literals
 
 from django.db import models, migrations
+import django.utils.timezone
 
 
 class Migration(migrations.Migration):
@@ -13,15 +14,11 @@ class Migration(migrations.Migration):
     operations = [
         migrations.RemoveField(
             model_name='book',
-            name='date_publication',
-        ),
-        migrations.RemoveField(
-            model_name='book',
-            name='is_draft',
+            name='end_date',
         ),
         migrations.AddField(
             model_name='book',
-            name='is_no_draft',
-            field=models.BooleanField(default=True),
+            name='public_date',
+            field=models.DateTimeField(default=django.utils.timezone.now),
         ),
     ]

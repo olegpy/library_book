@@ -1,0 +1,21 @@
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+article {
+    // position: relative;
+    // overflow: hidden;
+    border-bottom: 1px solid #111;
+    .article-header {
+    	float: left;
+    	margin-top: 0;
+    }
+    .list-categoies {
+    	float: right;
+    	margin-bottom: 0;
+    	li {
+    		display: inline-block;
+    	}
+    }
+}

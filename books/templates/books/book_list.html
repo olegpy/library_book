@@ -1,0 +1,35 @@
+{% extends "books/base.html" %} 
+
+{% block content_article %}
+
+<div class="col-lg-12">
+    <h1><a href="">List books</a></h1>
+</div>
+<div class="col-md-8">
+	<div class="content-article ">
+		{% if books.count > 0 %} 
+	    	{% for book in books %}  
+			    <article>
+					<h4 class="article-header">{{ book.name }}</h4>
+    				{% if book.genresbooks %}
+						<ul class="list-categoies">
+							{% for genresbook in book.genresbooks.all %}
+								<li>{{ genresbook }}</li>
+							{% endfor %}
+						</ul>
+					{% endif %}
+					{% if book.image %}
+					<img src="{{ MEDIA_URL }}{{ book.image }}" alt="thumb-1">
+					{% endif %}
+					{% if book.description %}
+					<p class="description">{{ book.description }}</p>
+					{% endif %}
+			    </article>   
+		    {% empty %}
+		        <p>There are currently no comments. You can be first!</p>
+		    {% endfor %}
+		{% endif %}
+	</div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,23 @@
+h1,
+h2,
+h3,
+h4 {
+    font-family: $font_h, cursive;
+}
+
+
+// theme style
+body {
+    font: $font_theme;
+}
+
+h1 {
+    a {
+        color: #FCA205;
+        font-family: $font_h;
+        &:hover {
+            text-decoration: inherit;
+            color: #926008;
+        }
+    }
+}
