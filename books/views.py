@@ -3,11 +3,12 @@
 # from django.views.generic.detail import DetailView
 # from django.views.decorators.csrf import csrf_exempt
 # import json
-from django.shortcuts import render
-
+from django.shortcuts import render, redirect
+from datetime import datetime, timedelta
 
 from .models import Book
 from .forms import BookModelForm
+from django.utils.timezone import now
 
 # class HomePageView(TemplateView):
 #     template_name = "books/book_list.html"
@@ -19,28 +20,34 @@ from .forms import BookModelForm
 
 
 def list_books(request):
-    # reguest_course = request.GET
-    # if 'course_id' in reguest_course:
-    #     list_students = Student.objects.filter(
-    #         courses=reguest_course['course_id'])
-    # else:
-    books = Book.objects.all()
+    enddate = datetime.today()
+    startdate = enddate - timedelta(days=8)
+    books = Book.objects.filter(public_date__range=(startdate, enddate))
     return render(request, 'books/book_list.html', {'books': books})
 
-def create(request):
-    context = {}
+def create_books(request):
     if request.method == "POST":
-        context['form'] = form = BookModelForm(request.POST)
+        form = BookModelForm(request.POST, request.FILES)
+        # for filename, file in request.FILES.iteritems():
+        #     print 'ss'
+        #     name = request.FILES[filename].name
+        #     print name
+        # self.object = form.save(commit=False)
+        # self.object.author = self.request.user
+        # self.object.published_date = timezone.now()
+        form_temp = form.save(commit=False)
+        form_temp.author_post = request.user
+        form_temp.save()
+        # form_temp.author = request.user
         if form.is_valid():
-            student = form.save()
+            book = form.save()
             data = form.cleaned_data
-            # messages.success(request, 'Student %s %s has been successfully added.' % (
-            #     student.name, student.surname))
+            print 'valid'
             return redirect('index')
 
     else:
-        context['form'] = StudentModelForm()
-    return render(request, 'books/add.html', context)
+        form = BookModelForm()
+    return render(request, 'books/add.html', {'form': form})
 
          # def list_view(request):
 #     reguest_course = request.GET

@@ -9,6 +9,8 @@ class Genre(models.Model):
 
 
 class Book(models.Model):
+    author_post = models.ForeignKey('auth.User')
+
     name = models.CharField(max_length=25, blank=True)
     author = models.CharField(max_length=25, blank=True)
     public_date = models.DateTimeField(default=timezone.now)

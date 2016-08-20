@@ -7,4 +7,4 @@ class BookModelForm(forms.ModelForm):
 
     class Meta:
         model = Book
-        exclude = ('public_date','is_no_draft',)
+        exclude = ('author_post','public_date','is_no_draft','image',)
