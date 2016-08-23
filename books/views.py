@@ -1,29 +1,20 @@
-# from django.views.generic.base import TemplateView
-# from django.http import HttpResponse
-# from django.views.generic.detail import DetailView
-# from django.views.decorators.csrf import csrf_exempt
-# import json
 from django.shortcuts import render, redirect
 from datetime import datetime, timedelta
 
 from .models import Book
 from .forms import BookModelForm
-from django.utils.timezone import now
-
-# class HomePageView(TemplateView):
-#     template_name = "books/book_list.html"
-
-#     def get_context_data(self, **kwargs):
-#         context = super(HomePageView, self).get_context_data(**kwargs)
-#         context['page_title'] = "Article list"
-#         return context
 
 
 def list_books(request):
-    enddate = datetime.today()
-    startdate = enddate - timedelta(days=8)
-    books = Book.objects.filter(public_date__range=(startdate, enddate))
+    all_books = Book.objects.all()
+    if request.user.is_authenticated():
+        books = all_books.filter(is_no_draft=True)
+    else:
+        enddate = datetime.today()
+        startdate = enddate - timedelta(days=8)
+        books = all_books.filter(public_date__range=(startdate, enddate), is_no_draft=True)
     return render(request, 'books/book_list.html', {'books': books})
+
 
 def create_books(request):
     if request.method == "POST":
