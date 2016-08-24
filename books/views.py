@@ -33,7 +33,6 @@ def create_books(request):
         if form.is_valid():
             book = form.save()
             data = form.cleaned_data
-            print 'valid'
             return redirect('index')
 
     else:
