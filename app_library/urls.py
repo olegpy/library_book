@@ -1,7 +1,7 @@
 from django.conf.urls import include, url
 from django.contrib import admin
 
-from books.views import list_books, create_books
+from books.views import list_books, create_books, author_books
 
 urlpatterns = [
     # Examples:
@@ -9,6 +9,7 @@ urlpatterns = [
     # url(r'^blog/', include('blog.urls')),
     url(r'^$', list_books, name='index'),
     url(r'^new/$', create_books, name='add_books'),
+     url(r'^author_books/$', author_books, name='author_books'),
 
     # url(r'^comments/$', comments, name='comments'),
 

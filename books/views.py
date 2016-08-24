@@ -16,6 +16,11 @@ def list_books(request):
     return render(request, 'books/book_list.html', {'books': books})
 
 
+def author_books(request):
+    books = Book.objects.filter(author_post=request.user)
+    return render(request, 'books/author_books.html', {'books': books})
+
+
 def create_books(request):
     if request.method == "POST":
         form = BookModelForm(request.POST, request.FILES)
@@ -33,6 +38,9 @@ def create_books(request):
         if form.is_valid():
             book = form.save()
             data = form.cleaned_data
+            print data
+            return redirect('index')
+        else:
             return redirect('index')
 
     else:

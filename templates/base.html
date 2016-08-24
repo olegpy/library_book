@@ -34,10 +34,15 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
+                    <a class="navbar-brand" href="{% url 'index' %}">Main page</a>
                 </div>
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    <div class="pull-right">
+                    <ul class="nav navbar-nav">
+                        <li><a href="{% url 'index' %}">Main</a></li>
+                        <li><a href="{% url 'author_books' %}">Author books</a></li>
+                    </ul>
+                    <div class="info-login">
                         {% if user.is_authenticated %}
                         <p class="top-menu">Hello {{ user.username }}<a href="{% url 'auth_logout_next' %}">Log out</a></p>
                         {% else %}
@@ -58,6 +63,7 @@
     </main>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/app.js' %}"></script>
 </body>
 
 </html>

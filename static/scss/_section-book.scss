@@ -3,19 +3,45 @@ img {
     height: auto;
 }
 
+.info-login {
+    float: right;
+    margin-top: 10px;
+    a {
+        margin-left: 10px;
+    }
+}
+
+.main-block-info {
+    .header-site {
+        display: inline-block;
+    }
+    .create-book {
+        margin-top: 27px;
+        float: right;
+    }
+}
+
 article {
-    // position: relative;
-    // overflow: hidden;
     border-bottom: 1px solid #111;
     .article-header {
-    	float: left;
-    	margin-top: 0;
+        float: left;
+        margin-top: 0;
+    }
+    img {
+        margin-bottom: 20px;
     }
     .list-categoies {
-    	float: right;
-    	margin-bottom: 0;
-    	li {
-    		display: inline-block;
-    	}
+        float: right;
+        margin-bottom: 0;
+        background: #ccc;
+        padding: 5px;
+        border-radius: 5px;
+        li {
+            display: inline-block;
+            + li {
+                border-left: 1px solid #000; 
+                padding-left: 5px;
+            }
+        }
     }
 }
