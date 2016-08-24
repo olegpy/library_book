@@ -1,11 +1,12 @@
-{% extends "books/base.html" %} {% block content_article %}
-<div class="col-lg-12">
+{% extends "books/base.html" %} 
+
+{% block content_article %}
+<div class="col-md-12">
     <div class="main-block-info">
         <h1 class="header-site"><a href="">List books</a></h1> {% if user.is_authenticated %}
         <a href="{% url 'add_books' %}" class="create-book btn btn-default">Create new book</a> {% endif %}
     </div>
-</div>
-
+    </div>
     <div class="content-article ">
 	        {% for book in books %} 
 	        {{book}} usserrrrr 
@@ -25,7 +26,7 @@
 		                {% endif %}
 		            </div>
 		            {% if book.image %}
-		            	<img src="{{ MEDIA_URL }}{{ book.image }}" alt="thumb-1"> 
+		            	<img src="{{ book.image }}" alt="thumb-1"> 
 	            	{% endif %} 
 	            	{% if book.description %}
 		            	<p class="description">{{ book.description }}</p>
