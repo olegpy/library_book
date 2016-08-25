@@ -44,7 +44,11 @@ article {
         }
     }
 }
-
+.checkbox input {
+    height: 17px;
+    width: auto;
+    margin: 0px 0px 0px -15px;
+}
 form {
     margin-bottom: 25px;
     button {
