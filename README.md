@@ -9,6 +9,7 @@ Steps for install project
 or
 
 - apt-get -y install python-pip
-- pip install virtualenv or virtualenv --python=python3.4 myvenv
+- pip install virtualenv
+- virtualenv --python=python3.4 myvenv
 - mkvirtualenv myenv source myvenv/bin/activate
 - pip install -r requirments.txt
