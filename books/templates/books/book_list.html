@@ -8,34 +8,40 @@
     </div>
     </div>
     <div class="content-article ">
+
+
+		{% if books|length > 0 %}
 	        {% for book in books %} 
-	        {{book}} usserrrrr 
-	        {{request.user.username}} 
-	        author post {{book.author_post}} 
-	        draft {{ book.is_no_draft }} {# {{request.user.username}} #} {# {{book.author_post}} #} {# {% if book.is_no_draft == False and request.user.username == book.author_post %} #} {# {% if book.is_no_draft == False and request.user.username == book.author_post %} #}
-	        <div class="col-md-4">
-		        <article>
-		            <div class="post-header">
-		                <h4 class="article-header">{{ book.name }}</h4> 
-		                {% if book.genresbooks %}
-			                <ul class="list-categoies">
-			                    {% for genresbook in book.genresbooks.all %}
-			                    	<li>{{ genresbook }}</li>
-			                    {% endfor %}
-			                </ul>
-		                {% endif %}
-		            </div>
-		            {% if book.image %}
-		            	<img src="{{ book.image }}" alt="thumb-1"> 
-	            	{% endif %} 
-	            	{% if book.description %}
-		            	<p class="description">{{ book.description }}</p>
-		            {% endif %}
-		        </article>
-	        </div>
-	        {# {% endif %} #} {% empty %}
-	        <p>There are currently no comments. You can be first!</p>
+		        {{book}} usserrrrr 
+		        {{request.user.username}} 
+		        author post {{book.author_post}} 
+		        draft {{ book.is_no_draft }} {# {{request.user.username}} #} {# {{book.author_post}} #} {# {% if book.is_no_draft == False and request.user.username == book.author_post %} #} {# {% if book.is_no_draft == False and request.user.username == book.author_post %} #}
+		        <div class="col-md-4">
+			        <article>
+			            <div class="post-header">
+			                <h4 class="article-header">{{ book.name }}</h4> 
+			                {% if book.genresbooks %}
+				                <ul class="list-categoies">
+				                    {% for genresbook in book.genresbooks.all %}
+				                    	<li>{{ genresbook }}</li>
+				                    {% endfor %}
+				                </ul>
+			                {% endif %}
+			            </div>
+			            {% if book.image %}
+			            	<img src="{{ book.image }}" alt="thumb-1"> 
+		            	{% endif %} 
+		            	{% if book.description %}
+			            	<p class="description">{{ book.description }}</p>
+			            {% endif %}
+			        </article>
+		        </div>	
 	        {% endfor %}
+        {% else %}
+        	<div class="col-md-12">
+				<p>There are currently no comments. You can be first!</p>
+        	</div>
+        {% endif %}
     </div>
 </div>
 {% endblock %}
