@@ -8,7 +8,7 @@
     {% for book in books %}
     <div class="col-md-4">
         <article>
-            <div class="post-header">
+            <div class="post-header clearfix">
                 <h4 class="article-header">{{ book.name }}</h4> {% if book.genresbooks %}
                 <ul class="list-categoies">
                     {% for genresbook in book.genresbooks.all %}
@@ -18,7 +18,7 @@
                 {% endif %}
             </div>
             {% if book.image %}
-            <img src="{{ MEDIA_URL }}{{ book.image }}" alt="thumb-1"> {% endif %} {% if book.description %}
+            <img src="../{{ MEDIA_URL }}{{ book.image }}" alt="thumb-1"> {% endif %} {% if book.description %}
             <p class="description">{{ book.description }}</p>
             {% endif %}
         </article>

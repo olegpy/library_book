@@ -1,4 +1,4 @@
 $(document).ready(function() {
-    $('input, textarea').addClass('form-control');
+    $('input, textarea, select').addClass('form-control');
 
 });

@@ -47,4 +47,9 @@ article .list-categoies {
       border-left: 1px solid #000;
       padding-left: 5px; }
 
+form {
+  margin-bottom: 25px; }
+  form button {
+    width: 100%; }
+
 /*# sourceMappingURL=style.css.map */
